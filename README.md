@@ -66,3 +66,17 @@ Total Units Sold = SUM(Financial_Data[Units Sold])
 Total Profit = SUM(Financial_Data[Profit])
 
 Profit Margin = DIVIDE([Total Profit], [Total Revenue], 0)
+
+Revenue Growth % =
+VAR Revenue2013 =
+    CALCULATE(
+        [Total Revenue],
+        Financial_Data[Year] = 2013
+    )
+VAR Revenue2014 =
+    CALCULATE(
+        [Total Revenue],
+        Financial_Data[Year] = 2014
+    )
+RETURN
+    DIVIDE(Revenue2014 - Revenue2013, Revenue2013)
